@@ -1,0 +1,80 @@
+  <div class="container">
+    <header class="header">
+      <h1>Tra cứu thông tin tỉnh</h1>
+      <p>Tìm kiếm thông tin tỉnh, phường/xã trước và sau sáp nhập</p>
+    </header>
+    
+    <main class="main-content">
+      <section class="search-section" aria-label="Tìm kiếm">
+        <div class="search-box">
+          <label for="search-input" class="sr-only">Tìm kiếm theo tỉnh, huyện, xã</label>
+          <input 
+            id="search-input"
+            type="text" 
+            [(ngModel)]="searchTerm" 
+            (input)="onSearch()"
+            placeholder="Tìm kiếm theo tỉnh, huyện, xã..."
+            class="search-input"
+            aria-describedby="search-help"
+          >
+          <button 
+            (click)="clearSearch()" 
+            class="clear-btn" 
+            *ngIf="searchTerm"
+            aria-label="Xóa tìm kiếm"
+            type="button"
+          >
+            ✕
+          </button>
+        </div>
+        
+        <div id="search-help" class="search-stats" aria-live="polite">
+          Hiển thị {{ filteredData.length }} / {{ data.length }} kết quả
+        </div>
+      </section>
+      
+      <section class="results-section" aria-label="Kết quả tìm kiếm">
+        <div class="table-container">
+          <table class="data-table" role="table" aria-label="Danh sách tỉnh thành">
+            <thead>
+              <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Tỉnh/Thành phố</th>
+                <th scope="col">Quận/Huyện</th>
+                <th scope="col">Phường/Xã (Trước sáp nhập)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of filteredData; let i = index" class="data-row">
+                <td>{{ i + 1 }}</td>
+                <td>
+                  <span class="province-name">{{ getProvinceName(item) }}</span>
+                </td>
+                <td>
+                  <span class="district-name">{{ getDistrictName(item) }}</span>
+                </td>
+                <td>
+                  <div class="wards-list">
+                    <span 
+                      *ngFor="let ward of getWardsList(item); let last = last" 
+                      class="ward-item"
+                    >
+                      {{ ward }}<span *ngIf="!last">, </span>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="no-results" *ngIf="filteredData.length === 0" role="status">
+          <p>Không tìm thấy kết quả nào phù hợp với "{{ searchTerm }}"</p>
+        </div>
+      </section>
+    </main>
+    
+    <footer class="footer">
+      <p>&copy; 2025 Tra cứu thông tin tỉnh. TECH SHOP - TDT DEV.</p>
+    </footer>
+  </div>
