@@ -1,5 +1,7 @@
 # Dữ liệu Tỉnh thành Việt Nam Cập nhật Từ 01/07/2025 🇻🇳
 
+Link tra cứu: https://tracuudiachi.vercel.app/
+
 Một kho dữ liệu (database) mã nguồn mở, chứa danh sách đầy đủ và cập nhật nhất về 34 đơn vị hành chính cấp tỉnh của Việt Nam.
 
 Dữ liệu đã được rà soát và điều chỉnh theo các nghị quyết mới nhất của Ủy ban Thường vụ Quốc hội về việc sắp xếp, sáp nhập các đơn vị hành chính, đảm bảo tính chính xác và phù hợp với thực tế.
