@@ -1,13 +1,19 @@
 {
   "version": 2,
-  "public": true,
   "builds": [
     {
-      "src": "dist/**/index.html",
+      "src": "dist/filter-province/server/main.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/filter-province/browser/**",
       "use": "@vercel/static"
     }
   ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/filter-province/server/main.js"
+    }
   ]
 }

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subject, takeUntil } from 'rxjs';
+import { inject } from "@vercel/analytics"
 
 interface ProvinceData {
   columns: string[];
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.loadData();
     this.setupSEO();
     this.setupRouterEvents();
+    inject();
   }
   
   ngOnDestroy() {
