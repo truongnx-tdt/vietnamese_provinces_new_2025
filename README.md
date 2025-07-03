@@ -1,4 +1,4 @@
-# Dữ liệu Tỉnh thành Việt Nam Cập nhật 🇻🇳
+# Dữ liệu Tỉnh thành Việt Nam Cập nhật Từ 01/07/2025 🇻🇳
 
 Một kho dữ liệu (database) mã nguồn mở, chứa danh sách đầy đủ và cập nhật nhất về 34 đơn vị hành chính cấp tỉnh của Việt Nam.
 
@@ -34,9 +34,9 @@ Dữ liệu được lưu trữ dưới dạng một mảng các đối tượng
 [
   {
         "columns": [
-            "An Giang",
-            "An Biên",
-            "Thị trấn Thứ Ba, Xã Đông Yên, Xã Hưng Yên"
+            "An Giang", // Tỉnh
+            "An Biên", // Phường Xã Sau Sáp Nhập
+            "Thị trấn Thứ Ba, Xã Đông Yên, Xã Hưng Yên" // Phường Xã Trước Sáp Nhập
         ]
     },
     {
@@ -48,6 +48,36 @@ Dữ liệu được lưu trữ dưới dạng một mảng các đối tượng
     },
 ]
 ```
+---
+### ✨ **Cấu trúc Cơ sở dữ liệu Tỉnh thành**
+
+Sơ đồ này mô tả cách lưu trữ dữ liệu các đơn vị hành chính của Việt Nam, bao gồm cả thông tin lịch sử sau khi sáp nhập.
+
+---
+
+### **1. Bảng `provinces`**
+
+Lưu trữ danh sách các tỉnh và thành phố trực thuộc trung ương.
+
+| Biểu tượng | Tên cột | Mô tả |
+| :--- | :--- | :--- |
+| 🔑 **`id`** | `INT AUTO_INCREMENT` | **Khóa chính** - Mã định danh duy nhất cho mỗi tỉnh. |
+| 🏙️ **`name`** | `VARCHAR(255)` | Tên đầy đủ của tỉnh hoặc thành phố. |
+
+---
+
+### **2. Bảng `wards`**
+
+Lưu trữ danh sách các phường, xã, thị trấn.
+
+| Biểu tượng | Tên cột | Mô tả |
+| :--- | :--- | :--- |
+| 🔑 **`id`** | `INT AUTO_INCREMENT` | **Khóa chính** - Mã định danh duy nhất cho mỗi phường/xã. |
+| 🔗 **`id_province`** | `INT` | **Khóa ngoại** - Liên kết với cột `id` của bảng `provinces`. |
+| 📍 **`name`** | `VARCHAR(255)` | Tên mới, chính thức của phường/xã. |
+| 📜 **`name_ole`** | `VARCHAR(255)` | **Tên cũ** của phường/xã trước khi sáp nhập (nếu có). |
+
+---
 ## 📂 Cấu trúc data file
 
 ```json
