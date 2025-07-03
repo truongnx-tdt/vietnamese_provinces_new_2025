@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "filterProvince": {
+    "angular-ssr-vercel": {
       "projectType": "application",
       "schematics": {},
       "root": "",
