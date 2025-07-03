@@ -6,21 +6,13 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { readFileSync } from 'node:fs';
-import { readFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
-const fs = require('fs');
-const path = require('path');
-
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const app = express();
+export const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 /**
