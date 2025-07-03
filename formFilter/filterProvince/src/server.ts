@@ -30,7 +30,6 @@ const angularApp = new AngularNodeAppEngine();
 app.get('/api/get-data', async (req, res) => {
   try {
     const filePath = join(process.cwd(), 'dist/browser/assets/data.json');
-    console.log(`Loading data from: ${filePath}`);
     const jsonData = readFileSync(filePath, 'utf8');
     res.json(JSON.parse(jsonData));
     // const filePath = join(process.cwd(),'src', 'assets', 'data.json');
