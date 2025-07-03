@@ -1,13 +1,13 @@
 {
   "version": 2,
   "public": true,
-  "name": "filter-province",
+  "name": "angular-ssr-vercel",
   "rewrites": [
     { "source": "/(.*)", "destination": "/api" }
   ],
   "functions": {
     "api/index.js": {
-      "includeFiles": "dist/filter-province/**"
+      "includeFiles": "dist/angular-ssr-vercel/**"
     }
   }
 }

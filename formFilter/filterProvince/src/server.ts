@@ -26,16 +26,15 @@ const angularApp = new AngularNodeAppEngine();
  * });
  * ```
  */
-
 app.get('/api/get-data', async (req, res) => {
   try {
-    const filePath = join(process.cwd(), 'dist/browser/assets/data.json');
-    const jsonData = readFileSync(filePath, 'utf8');
-    res.json(JSON.parse(jsonData));
-    // const filePath = join(process.cwd(),'src', 'assets', 'data.json');
-    // console.log(`Loading data from: ${filePath}`);
-    // const jsonData = readFileSync(filePath, 'utf-8');
+    // const filePath = join(process.cwd(), 'dist/browser/assets/data.json');
+    // const jsonData = readFileSync(filePath, 'utf8');
     // res.json(JSON.parse(jsonData));
+    const filePath = join(process.cwd(), 'assets', 'data.json');
+    console.log(`Loading data from: ${filePath}`);
+    const jsonData = readFileSync(filePath, 'utf-8');
+    res.json(JSON.parse(jsonData));
   } catch (error) {
     res.status(500).json({ error: 'Error loading data.json' });
   }
@@ -77,6 +76,6 @@ if (isMainModule(import.meta.url)) {
 }
 
 /**
- * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
+ * The request handler used by the Angular CLI (dev-server and during build).
  */
 export const reqHandler = createNodeRequestHandler(app);
